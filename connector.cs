@@ -10,7 +10,7 @@ public class Script : ScriptBase
             var contentAsJson = JObject.Parse(await Context.Request.Content.ReadAsStringAsync().ConfigureAwait(false));
             string xmlStr = (string)contentAsJson["xml"];
             if(!String.IsNullOrEmpty(xmlStr)){
-                doc.LoadXml((string)contentAsJson["xml"]);
+                doc.LoadXml(xmlStr);
                 var jsonStr = JsonConvert.SerializeXmlNode(doc);
 
                 response = new HttpResponseMessage(HttpStatusCode.OK);
